@@ -1,0 +1,25 @@
+@import "../../variable.module.scss";
+
+.pageNavigationList {
+  cursor: pointer;
+  .itemActive {
+    background-color: $primaryBtnColor;
+  }
+  .pageNavigationItem {
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 8px;
+    cursor: pointer;
+    .navIcon {
+      height: 24px;
+      cursor: pointer;
+    }
+    .navLabel {
+      margin-left: 16px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  }
+}

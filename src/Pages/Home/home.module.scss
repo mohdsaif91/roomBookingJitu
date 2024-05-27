@@ -1,0 +1,36 @@
+@import "../../variable.module.scss";
+
+.homeContainer {
+  .cardContainer {
+    display: flex;
+    align-items: center;
+    gap: 10%;
+    .cardItem {
+      width: 20%;
+      padding: 16px;
+      color: $whiteColor;
+      border-radius: 8px;
+      .cardLabel {
+        font-size: 12px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        font-weight: 600;
+        line-height: 1.1;
+      }
+      .labelValue {
+        margin: 12px 0;
+        font-size: 24px;
+        display: block;
+      }
+    }
+    .primaryCard {
+      background-color: $primaryCardColor;
+    }
+    .secondaryCard {
+      background-color: $secondaryCardColor;
+    }
+    .tertiaryCard {
+      background-color: $tertiaryCardColor;
+    }
+  }
+}

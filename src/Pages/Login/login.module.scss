@@ -1,0 +1,32 @@
+@import "../../variable.module.scss";
+
+.loginContainer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: $primarybgColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../../util/Assets/Image/loginImage.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  .formContainer {
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    padding: 64px;
+    background-color: #ffffff;
+    .loginInput {
+      width: 320px;
+      margin-bottom: 24px;
+    }
+    .loginBtn {
+      background-color: $primaryBtnColor;
+      color: $whiteColor;
+      font-weight: 600;
+    }
+  }
+}
