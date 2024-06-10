@@ -32,6 +32,11 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
+input[type="file"] {
+  cursor: pointer;
+  border: none;
+}
+
 button {
   padding: 16px 24px;
   border-radius: 8px;
@@ -72,5 +77,6 @@ button {
   }
 }
 
-.listPadding {
+.rmMargin {
+  margin-left: 0;
 }

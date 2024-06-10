@@ -22,6 +22,7 @@ const loginSlice = createSlice({
   initialState: {
     loginFlag: false,
     loginData: JSON.parse(sessionStorage.getItem("loginData") || "{}"),
+    loading: false,
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -32,6 +33,13 @@ const loginSlice = createSlice({
         loginFlag: true,
         loginData: payload.data,
         error: false,
+        loading: false,
+      };
+    });
+    builder.addCase(signinUser.pending, (state, { payload }) => {
+      return {
+        ...state,
+        loading: true,
       };
     });
     builder.addCase(signinUser.rejected, (state, { payload }) => {
@@ -39,6 +47,7 @@ const loginSlice = createSlice({
         ...state,
         loginFlag: false,
         loginData: null,
+        loading: false,
       };
     });
   },

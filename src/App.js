@@ -7,32 +7,62 @@ import Loading from "./Component/Loading/Loading";
 import style from "./index.module.scss";
 import PageTitle from "./Component/PageTitle/PageTitle";
 import LeftNavigation from "./Component/LeftNavigation/LeftNavigation";
+import { useSelector } from "react-redux";
 
 const Login = React.lazy(() => import("./Pages/Login/Login"));
 const Home = React.lazy(() => import("./Pages/Home/Home"));
 const Event = React.lazy(() => import("./Pages/Event/Event"));
 const AddRoom = React.lazy(() => import("./Pages/Room/AddRoom/AddRoom"));
 const RoomList = React.lazy(() => import("./Pages/Room/RoomList/RoomList"));
+const ViewBooking = React.lazy(() =>
+  import("./Pages/Room/ViewBooking/ViewBooking")
+);
+const LabourList = React.lazy(() =>
+  import("./Pages/Labour/LabourList/LabourList")
+);
+const LabourData = React.lazy(() =>
+  import("./Pages/Labour/AddLabour/AddLabour")
+);
 
 function App() {
   const [openleftNav, setOpenLeftNav] = useState(false);
 
+  const authData = useSelector((state) => state.login);
+
   const { pathname } = useLocation();
+
+  console.log(
+    authData?.loginData.role !== "superAdmin" ||
+      authData?.loginData.role !== "staff",
+    " <>?"
+  );
 
   return (
     <div className={style.mainApp}>
-      <div
-        className={`${style.navigation}
+      {(authData?.loginData.role === "superAdmin" ||
+        authData?.loginData.role === "staff") && (
+        <div
+          className={`${style.navigation}
           ${
             openleftNav
               ? style.largVerticalNavigation
               : style.verticalNavigation
           }
         `}
+        >
+          <LeftNavigation openleftNav={openleftNav} />
+        </div>
+      )}
+      <div
+        className={`${
+          openleftNav
+            ? style.extraMargin
+            : authData?.loginData.role === "superAdmin" ||
+              authData?.loginData.role === "staff"
+            ? style.mainPage
+            : style.rmMargin
+        }`}
       >
-        <LeftNavigation openleftNav={openleftNav} />
-      </div>
-      <div className={`${openleftNav ? style.extraMargin : style.mainPage}`}>
         {pathname !== "/login" && (
           <Header
             openCloseDrawer={(openCloseFlag) => setOpenLeftNav(openCloseFlag)}
@@ -79,6 +109,30 @@ function App() {
               element={
                 <Suspense fallback={<Loading />}>
                   <AddRoom />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/viewBooking"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <ViewBooking />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/labour"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <LabourList />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/addLabour"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <LabourData />
                 </Suspense>
               }
             />

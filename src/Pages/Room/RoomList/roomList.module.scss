@@ -47,7 +47,10 @@
             width: 15%;
           }
           &:nth-child(5) {
-            width: 40%;
+            width: 10%;
+          }
+          &:nth-child(6) {
+            width: 30%;
           }
         }
       }
@@ -58,9 +61,16 @@
         }
         .tableDataRowItem {
           text-align: left;
-          font-size: 16px;
+          font-size: 17px;
           font-weight: 500;
           padding: 16px;
+          .actionIcon {
+            height: 24px;
+            cursor: pointer;
+            &:first-child {
+              margin-right: 8px;
+            }
+          }
         }
         .roomCircleContainer {
           display: grid;

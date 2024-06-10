@@ -15,7 +15,7 @@ function LeftNavigation({ openleftNav }) {
         <li
           key={m.id}
           className={`${style.pageNavigationItem} ${
-            pathname === m.route && style.itemActive
+            m.subRoutes.includes(pathname) && style.itemActive
           }`}
           onClick={() => {
             navigate(m.route);
