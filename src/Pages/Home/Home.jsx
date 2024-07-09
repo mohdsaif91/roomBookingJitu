@@ -31,6 +31,7 @@ function Home() {
 
   const roomSlice = useSelector((state) => state.room);
   const authData = useSelector((state) => state.login);
+  const BookingSlice = useSelector((state) => state.booking);
 
   const dispatch = useDispatch();
 
@@ -59,7 +60,7 @@ function Home() {
 
   return (
     <div className={style.homeContainer}>
-      {roomSlice.loading ? (
+      {BookingSlice.loading ? (
         <Loading />
       ) : (
         <>

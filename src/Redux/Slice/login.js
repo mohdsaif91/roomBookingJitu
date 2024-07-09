@@ -10,9 +10,14 @@ export const signinUser = createAsyncThunk(
       method: "post",
       data,
     };
-    console.log(payload, " <>?");
     return onAuthenticated(payload)
-      .then((res) => fulfillWithValue(res))
+      .then((res) => {
+        if (res.status === 200) {
+          return fulfillWithValue(res);
+        } else {
+          return rejectWithValue(res.data.msg);
+        }
+      })
       .catch((err) => rejectWithValue(err));
   }
 );
@@ -23,6 +28,7 @@ const loginSlice = createSlice({
     loginFlag: false,
     loginData: JSON.parse(sessionStorage.getItem("loginData") || "{}"),
     loading: false,
+    errMsg: "",
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -46,8 +52,9 @@ const loginSlice = createSlice({
       return {
         ...state,
         loginFlag: false,
-        loginData: null,
+        loginData: { role: "" },
         loading: false,
+        errMsg: "No User Found !",
       };
     });
   },

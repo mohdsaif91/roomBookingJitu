@@ -1,13 +1,13 @@
-import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import { apiList } from "../../API/apiIndex";
 import { onAuthenticated } from "../../API/axios";
 
-export const bookRoom = createAsyncThunk(
-  "booking/bookRoom",
+export const addLabour = createAsyncThunk(
+  "labour/addLabour",
   (data, { fulfillWithValue, rejectWithValue }) => {
     const payload = {
-      url: apiList.roomBooking,
+      url: apiList.addLabour,
       method: "post",
       data,
     };
@@ -17,11 +17,25 @@ export const bookRoom = createAsyncThunk(
   }
 );
 
-export const getBookedRooms = createAsyncThunk(
-  "booking/getBookedRoom",
+export const markAttendence = createAsyncThunk(
+  "labour/markAttendence",
   (data, { fulfillWithValue, rejectWithValue }) => {
     const payload = {
-      url: apiList.getBookedRooms,
+      url: apiList.markAttendence,
+      method: "post",
+      data,
+    };
+    return onAuthenticated(payload)
+      .then((res) => fulfillWithValue(res))
+      .catch((err) => rejectWithValue(err));
+  }
+);
+
+export const getLabourList = createAsyncThunk(
+  "labour/getlabourlist",
+  (data, { fulfillWithValue, rejectWithValue }) => {
+    const payload = {
+      url: apiList.getLabour,
       method: "get",
     };
     return onAuthenticated(payload, true)
@@ -30,88 +44,74 @@ export const getBookedRooms = createAsyncThunk(
   }
 );
 
-export const deleteBookedRoom = createAsyncThunk(
-  "booking/deleteBooking",
-  (data, { fulfillWithValue, rejectWithValue }) => {
-    const payload = {
-      url: `${apiList.deleteBooking}/${data}`,
-      method: "delete",
-    };
-    return onAuthenticated(payload, true)
-      .then((res) => fulfillWithValue(res))
-      .catch((err) => rejectWithValue(err));
-  }
-);
-
-const boookingSlice = createSlice({
-  name: "booking",
+const labourSlice = createSlice({
+  name: "labour",
   initialState: {
     loading: false,
-    booking: null,
-    error: null,
+    labourData: null,
+    error: "",
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(bookRoom.fulfilled, (state, { payload }) => {
+    builder.addCase(addLabour.fulfilled, (state, { payload }) => {
       return {
         ...state,
         loading: false,
+        labourData: payload.data,
       };
     });
-    builder.addCase(bookRoom.pending, (state, { payload }) => {
+    builder.addCase(addLabour.pending, (state, { payload }) => {
       return {
         ...state,
         loading: true,
       };
     });
-    builder.addCase(bookRoom.rejected, (state, { payload }) => {
-      return {
-        ...state,
-        loading: false,
-      };
-    });
-    builder.addCase(getBookedRooms.fulfilled, (state, { payload }) => {
-      return {
-        ...state,
-        loading: false,
-        booking: payload.data,
-      };
-    });
-    builder.addCase(getBookedRooms.pending, (state, { payload }) => {
-      return {
-        ...state,
-        loading: true,
-      };
-    });
-    builder.addCase(getBookedRooms.rejected, (state, { payload }) => {
+    builder.addCase(addLabour.rejected, (state, { payload }) => {
       return {
         ...state,
         loading: false,
         error: payload.data,
       };
     });
-    builder.addCase(deleteBookedRoom.fulfilled, (state, { payload }) => {
-      const existingState = current(state);
+    builder.addCase(getLabourList.fulfilled, (state, { payload }) => {
       return {
         ...state,
         loading: false,
-        booking: existingState.booking.filter((f) => f._id !== payload.data),
+        labourData: payload.data,
       };
     });
-    builder.addCase(deleteBookedRoom.pending, (state, { payload }) => {
+    builder.addCase(getLabourList.pending, (state, { payload }) => {
       return {
         ...state,
         loading: true,
       };
     });
-    builder.addCase(deleteBookedRoom.rejected, (state, { payload }) => {
+    builder.addCase(getLabourList.rejected, (state, { payload }) => {
       return {
         ...state,
         loading: false,
+        error: payload.data,
+      };
+    });
+    builder.addCase(markAttendence.fulfilled, (state, { payload }) => {
+      return {
+        ...state,
+        loading: false,
+      };
+    });
+    builder.addCase(markAttendence.pending, (state, { payload }) => {
+      return {
+        ...state,
+        loading: true,
+      };
+    });
+    builder.addCase(markAttendence.rejected, (state, { payload }) => {
+      return {
+        ...state,
         error: payload.data,
       };
     });
   },
 });
 
-export const BookingReducer = boookingSlice.reducer;
+export const LabourReducer = labourSlice.reducer;

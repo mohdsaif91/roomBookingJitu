@@ -11,7 +11,8 @@ import { useSelector } from "react-redux";
 
 const Login = React.lazy(() => import("./Pages/Login/Login"));
 const Home = React.lazy(() => import("./Pages/Home/Home"));
-const Event = React.lazy(() => import("./Pages/Event/Event"));
+const Event = React.lazy(() => import("./Pages/Event/EventHome/Event"));
+const EventList = React.lazy(() => import("./Pages/Event/EventList/EventList"));
 const AddRoom = React.lazy(() => import("./Pages/Room/AddRoom/AddRoom"));
 const RoomList = React.lazy(() => import("./Pages/Room/RoomList/RoomList"));
 const ViewBooking = React.lazy(() =>
@@ -20,8 +21,17 @@ const ViewBooking = React.lazy(() =>
 const LabourList = React.lazy(() =>
   import("./Pages/Labour/LabourList/LabourList")
 );
-const LabourData = React.lazy(() =>
+const AddLabour = React.lazy(() =>
   import("./Pages/Labour/AddLabour/AddLabour")
+);
+const RoomBooking = React.lazy(() =>
+  import("./Pages/Booking/RoomBookingList/RoomBookingList")
+);
+const MarkAttendence = React.lazy(() =>
+  import("./Pages/Labour/Scanner/Scanner")
+);
+const AttendencView = React.lazy(() =>
+  import("./Pages/Labour/Attendence/AttendenceView")
 );
 
 function App() {
@@ -31,16 +41,10 @@ function App() {
 
   const { pathname } = useLocation();
 
-  console.log(
-    authData?.loginData.role !== "superAdmin" ||
-      authData?.loginData.role !== "staff",
-    " <>?"
-  );
-
   return (
     <div className={style.mainApp}>
-      {(authData?.loginData.role === "superAdmin" ||
-        authData?.loginData.role === "staff") && (
+      {(authData?.loginData?.role === "superAdmin" ||
+        authData?.loginData?.role === "staff") && (
         <div
           className={`${style.navigation}
           ${
@@ -57,8 +61,8 @@ function App() {
         className={`${
           openleftNav
             ? style.extraMargin
-            : authData?.loginData.role === "superAdmin" ||
-              authData?.loginData.role === "staff"
+            : authData?.loginData?.role === "superAdmin" ||
+              authData?.loginData?.role === "staff"
             ? style.mainPage
             : style.rmMargin
         }`}
@@ -89,7 +93,15 @@ function App() {
               }
             />
             <Route
-              path="/event"
+              path="/eventList"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <EventList />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/addEvent"
               element={
                 <Suspense fallback={<Loading />}>
                   <Event />
@@ -132,7 +144,31 @@ function App() {
               path="/addLabour"
               element={
                 <Suspense fallback={<Loading />}>
-                  <LabourData />
+                  <AddLabour />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/roomBooking"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <RoomBooking />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/markAttendence"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <MarkAttendence />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/attendenceView"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <AttendencView />
                 </Suspense>
               }
             />

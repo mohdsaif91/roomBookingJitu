@@ -2,6 +2,7 @@ import Event from "../Icon/event.png";
 import Room from "../Icon/room.png";
 import Dashboard from "../Icon/dashobard.png";
 import Worker from "../Icon/workers.png";
+import Booking from "../Icon/booking.png";
 
 export const routeData = [
   {
@@ -14,8 +15,8 @@ export const routeData = [
   {
     id: 1,
     name: "Event",
-    route: "/event",
-    subRoutes: ["/event"],
+    route: "/eventList",
+    subRoutes: ["/eventList", "/addEvent"],
     img: Event,
   },
   {
@@ -27,9 +28,16 @@ export const routeData = [
   },
   {
     id: 3,
+    name: "Room Booking",
+    route: "/roomBooking",
+    subRoutes: ["/roomBooking"],
+    img: Booking,
+  },
+  {
+    id: 4,
     name: "Labour",
     route: "/labour",
-    subRoutes: ["/labour", "/addLabour"],
+    subRoutes: ["/labour", "/addLabour", "/attendenceView"],
     img: Worker,
   },
 ];

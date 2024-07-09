@@ -49,6 +49,9 @@ function Login() {
           <button className={style.loginBtn} onClick={() => submitCred()}>
             Login
           </button>
+          {loginData.errMsg !== "" && (
+            <div className={style.errMsg}>{loginData.errMsg}</div>
+          )}
         </div>
       )}
     </div>

@@ -1,0 +1,76 @@
+@import "../../../variable.module.scss";
+
+.roomBookingContainer {
+  padding: 24px;
+  background-color: $whiteColor;
+  border-radius: 8px;
+  margin-bottom: 32px;
+  box-shadow: 0 8px 12px 2px gray;
+  .roomHeading {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    .refreshIocn {
+      cursor: pointer;
+      height: 32px;
+      margin-right: 24px;
+    }
+  }
+  .roomBookingTableContainer {
+    .roomTable {
+      .tableHeaderRowItem {
+        text-align: left;
+        font-size: 20px;
+        color: #6c757d;
+        font-weight: 600;
+        padding: 16px;
+        &:nth-child(1) {
+          width: 6%;
+        }
+        &:nth-child(2) {
+          width: 18%;
+        }
+        &:nth-child(3) {
+          width: 5%;
+        }
+        &:nth-child(4) {
+          width: 30%;
+        }
+        &:nth-child(5) {
+          width: 6%;
+        }
+        &:nth-child(6) {
+          width: 30%;
+        }
+      }
+      .tableDataRow {
+        padding: 8px 16px;
+        &:nth-child(even) {
+          background-color: #dadcdd;
+        }
+        .tableDataRowItem {
+          text-align: left;
+          font-size: 17px;
+          font-weight: 500;
+          padding: 16px;
+          .actionIcon {
+            height: 24px;
+            cursor: pointer;
+            &:first-child {
+              margin-right: 8px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.extraCol {
+  width: 6% !important;
+}
+
+.noData {
+  text-align: center;
+  margin-top: 32px;
+}

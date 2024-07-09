@@ -1,0 +1,61 @@
+@import "../../../variable.module.scss";
+
+.attendenceViewContainer {
+  padding: 24px;
+  background-color: $whiteColor;
+  border-radius: 8px;
+  margin-bottom: 32px;
+  box-shadow: 0 8px 12px 2px gray;
+  .roomHeading {
+    display: flex;
+    flex-direction: column;
+    .labourDataContainer {
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      .data {
+      }
+      .actionContainer {
+        display: flex;
+      }
+    }
+    .refreshIocn {
+      cursor: pointer;
+      height: 32px;
+      margin-right: 24px;
+    }
+  }
+  .attendenceContainer {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    .dayContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid $borderColor;
+      border-radius: 4px;
+      padding: 16px 32px;
+      flex-direction: column;
+    }
+  }
+}
+.dayPresent {
+  color: $whiteColor;
+  background-color: $secondaryCardColor;
+}
+.labelHeading {
+  font-size: 20px;
+}
+.labelValue {
+  font-size: 22px;
+  font-weight: 700;
+  margin-left: 8px;
+}
+.monthValue {
+  font-size: 22px;
+  font-weight: 700;
+}
+.monthHeading {
+  font-size: 20px;
+}
