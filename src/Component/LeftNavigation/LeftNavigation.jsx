@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Tooltip as ReactTooltip } from "react-tooltip";
+import { Tooltip } from "react-tooltip";
 
 import { routeData } from "../../util/Assets/Data/routesData";
 
@@ -23,6 +23,11 @@ function LeftNavigation({ openleftNav }) {
           }}
         >
           <img src={m.img} className={style.navIcon} />
+          {/* <Tooltip
+            id={`room-tool-tip-${m.name}`}
+            place="right"
+            content={<div>{m.name}</div>}
+          /> */}
           {openleftNav && <label className={style.navLabel}>{m.name}</label>}
         </li>
       ))}

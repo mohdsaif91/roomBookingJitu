@@ -230,7 +230,8 @@ function AddRoom() {
                     className={style.generatedInputItem}
                     value={m.roomNumber}
                     onChange={(e) => {
-                      generatedRooms[i].roomNumber = parseInt(e.target.value);
+                      generatedRooms[i].roomNumber =
+                        e.target.value === "" ? 0 : parseInt(e.target.value);
                       setGeneratedRooms([...generatedRooms]);
                     }}
                   />

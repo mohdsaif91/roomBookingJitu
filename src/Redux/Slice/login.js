@@ -12,6 +12,7 @@ export const signinUser = createAsyncThunk(
     };
     return onAuthenticated(payload)
       .then((res) => {
+        console.log(res, " <>?");
         if (res.status === 200) {
           return fulfillWithValue(res);
         } else {
@@ -30,7 +31,15 @@ const loginSlice = createSlice({
     loading: false,
     errMsg: "",
   },
-  reducers: {},
+  reducers: {
+    logoutUser: (state) => {
+      sessionStorage.clear();
+      return {
+        ...state,
+        loginData: null,
+      };
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(signinUser.fulfilled, (state, { payload }) => {
       sessionStorage.setItem("loginData", JSON.stringify(payload.data));
@@ -61,3 +70,5 @@ const loginSlice = createSlice({
 });
 
 export const LoginReducer = loginSlice.reducer;
+
+export const { logoutUser } = loginSlice.actions;

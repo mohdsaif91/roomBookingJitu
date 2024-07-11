@@ -1,0 +1,24 @@
+@import "../../../variable.module.scss";
+
+.staffContainer {
+  padding: 24px;
+  background-color: $whiteColor;
+  border-radius: 8px;
+  margin-bottom: 32px;
+  box-shadow: 0 8px 12px 2px gray;
+  .roomHeading {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    .refreshIocn {
+      cursor: pointer;
+      height: 32px;
+      margin-right: 24px;
+    }
+    .addRoomBtn {
+      background-color: $primaryBtnColor;
+      color: $whiteColor;
+      font-size: 600;
+    }
+  }
+}

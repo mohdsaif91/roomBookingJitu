@@ -3,6 +3,7 @@ import Room from "../Icon/room.png";
 import Dashboard from "../Icon/dashobard.png";
 import Worker from "../Icon/workers.png";
 import Booking from "../Icon/booking.png";
+import Staff from "../Icon/staff.png";
 
 export const routeData = [
   {
@@ -11,6 +12,7 @@ export const routeData = [
     route: "/",
     subRoutes: ["/"],
     img: Dashboard,
+    role: ["staff"],
   },
   {
     id: 1,
@@ -18,6 +20,7 @@ export const routeData = [
     route: "/eventList",
     subRoutes: ["/eventList", "/addEvent"],
     img: Event,
+    role: ["staff"],
   },
   {
     id: 2,
@@ -25,6 +28,7 @@ export const routeData = [
     route: "/room",
     subRoutes: ["/room", "/addRoom", "/viewBooking"],
     img: Room,
+    role: ["staff"],
   },
   {
     id: 3,
@@ -32,6 +36,7 @@ export const routeData = [
     route: "/roomBooking",
     subRoutes: ["/roomBooking"],
     img: Booking,
+    role: ["staff"],
   },
   {
     id: 4,
@@ -39,5 +44,14 @@ export const routeData = [
     route: "/labour",
     subRoutes: ["/labour", "/addLabour", "/attendenceView"],
     img: Worker,
+    role: ["staff"],
+  },
+  {
+    id: 5,
+    name: "Staff",
+    route: "/staffList",
+    subRoutes: ["/addStaff", "/updateProfile"],
+    img: Staff,
+    role: ["admin"],
   },
 ];

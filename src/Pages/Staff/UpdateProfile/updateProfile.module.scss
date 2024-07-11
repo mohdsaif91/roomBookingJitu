@@ -1,0 +1,14 @@
+@import "../../../variable.module.scss";
+
+.updateProfileContainer {
+  padding: 24px;
+  background-color: $whiteColor;
+  border-radius: 8px;
+  margin-bottom: 32px;
+  box-shadow: 0 8px 12px 2px gray;
+
+  .updateProfileFormContainer {
+    .logoutBtn {
+    }
+  }
+}

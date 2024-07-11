@@ -24,4 +24,5 @@ export const apiList = {
   getAttendence: `${attendence}`,
   addEvent: `${eventv1}/add`,
   getEventData: `${eventv1}`,
+  addStaff: `${signinV1}/addStaff`,
 };

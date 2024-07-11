@@ -6,6 +6,7 @@ import { BookingReducer } from "./Slice/booking";
 import { LabourReducer } from "./Slice/labour";
 import { AttendenceReducer } from "./Slice/attendence";
 import { EventReducer } from "./Slice/event";
+import { StaffReducer } from "./Slice/staff";
 
 const reducer = {
   login: LoginReducer,
@@ -14,6 +15,7 @@ const reducer = {
   labour: LabourReducer,
   attendence: AttendenceReducer,
   event: EventReducer,
+  staff: StaffReducer,
 };
 
 export const store = configureStore({

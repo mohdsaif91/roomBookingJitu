@@ -33,6 +33,11 @@ const MarkAttendence = React.lazy(() =>
 const AttendencView = React.lazy(() =>
   import("./Pages/Labour/Attendence/AttendenceView")
 );
+const StaffList = React.lazy(() => import("./Pages/Staff/StaffList/StaffList"));
+const AddStaff = React.lazy(() => import("./Pages/Staff/AddStaff/AddStaff"));
+const UpdateProfile = React.lazy(() =>
+  import("./Pages/Staff/UpdateProfile/UpdateProfile")
+);
 
 function App() {
   const [openleftNav, setOpenLeftNav] = useState(false);
@@ -169,6 +174,30 @@ function App() {
               element={
                 <Suspense fallback={<Loading />}>
                   <AttendencView />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/staffList"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <StaffList />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/addStaff"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <AddStaff />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/updateProfile"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <UpdateProfile />
                 </Suspense>
               }
             />
