@@ -3,7 +3,7 @@ import Axios from "axios";
 export const onAuthenticated = async (payload, formData = false) => {
   const axiosApi = Axios.create({
     baseURL: "http://localhost:5000",
-    // baseURL: "https://dazzlefurnitureserver.onrender.com/",
+    // baseURL: "https://roombookingserver.onrender.com",
     headers: {
       "Content-type": formData ? "multipart/form-data" : "application/json",
     },
